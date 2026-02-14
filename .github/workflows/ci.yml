@@ -9,6 +9,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      SEED: 42
     strategy:
       matrix:
         python-version: ['3.11']
