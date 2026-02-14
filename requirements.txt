@@ -1,0 +1,16 @@
+sentence-transformers>=2.2.0
+chromadb==0.3.23
+pydantic==1.10.12
+duckdb>=0.6.1
+pdfplumber>=0.7.6
+beautifulsoup4>=4.10.0
+tqdm>=4.60.0
+numpy>=1.22.0
+torch>=1.12.0
+python-dotenv>=1.0.0
+transformers>=4.30.0
+faiss-cpu>=1.7.3
+pandas>=1.5.0
+langchain>=0.0.300
+tiktoken>=0.4.0
+streamlit>=1.0.0
