@@ -7,6 +7,8 @@ import sys
 import pathlib
 from dotenv import load_dotenv
 load_dotenv()  # Load .env if present, for config like OPENAI_API_KEY
+import os
+print("OPENROUTER_API_KEY loaded:", bool(os.getenv("OPENROUTER_API_KEY")))
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SRC = str(ROOT / "src")
@@ -94,13 +96,17 @@ CHAT_HTML = """<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Policy RAG Chat</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
   <style>
     * { box-sizing: border-box; }
     body { font-family: system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 1rem; }
     h1 { margin-top: 0; }
     #question { width: 100%; min-height: 80px; padding: 8px; margin-bottom: 8px; }
     button { padding: 8px 16px; cursor: pointer; }
-    #answer { white-space: pre-wrap; margin: 1rem 0; padding: 1rem; background: #f5f5f5; border-radius: 8px; }
+    #answer { white-space: normal; margin: 1rem 0; padding: 1rem; background: #f5f5f5; border-radius: 8px; }
+    #answer h1, #answer h2, #answer h3 { margin-top: 0.5rem; }
+    #answer ul, #answer ol { padding-left: 1.5rem; }
+    #answer p { margin: 0.4rem 0; }
     .source { margin: 0.5rem 0; padding: 0.5rem; background: #eee; border-radius: 4px; font-size: 0.9rem; }
     .source a { color: #06c; }
     .snippet { color: #555; margin-top: 4px; }
@@ -141,7 +147,7 @@ CHAT_HTML = """<!DOCTYPE html>
           answerEl.innerHTML = '<span class="error">' + (data.error || res.statusText) + '</span>';
           return;
         }
-        answerEl.textContent = data.answer || '(No answer)';
+        answerEl.innerHTML = marked.parse(data.answer || '(No answer)');
         const sources = data.sources || [];
         if (sources.length) {
           sources.forEach(s => {

@@ -3,6 +3,7 @@ RAG pipeline: retrieve → (re-rank) → prompt → generate via OpenRouter LLM.
 Falls back to extractive answer if no LLM key is configured.
 """
 import os
+import time
 import argparse
 import textwrap
 import sys
@@ -105,31 +106,45 @@ def should_refuse(results: List[Dict[str, Any]], re_ranked: bool, threshold: flo
 # ---------------------------------------------------------------------------
 
 def generate_with_openrouter(prompt: str, max_tokens: int) -> str | None:
-    """
-    Call OpenRouter's free tier using the openai SDK.
-    Set OPENROUTER_API_KEY in your .env or environment.
-    Default model: meta-llama/llama-3.1-8b-instruct:free (free on OpenRouter).
-    """
     api_key = os.getenv("OPENROUTER_API_KEY", "").strip()
     if not api_key:
+        print("[OpenRouter] No API key found")
         return None
-    try:
-        from openai import OpenAI
-        model = os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3.3-70b-instruct:free")
-        client = OpenAI(
-            api_key=api_key,
-            base_url="https://openrouter.ai/api/v1",
-        )
-        response = client.chat.completions.create(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=max_tokens,
-            temperature=0.0,
-        )
-        return response.choices[0].message.content.strip()
-    except Exception as e:
-        print(f"[OpenRouter] generation failed: {e}")
-        return None
+
+    # Ordered list of free models to try — if first is rate limited, try next
+    models_to_try = [
+        os.getenv("OPENROUTER_MODEL", "openrouter/free"),
+        "meta-llama/llama-3.3-70b-instruct:free",
+        "mistralai/mistral-small-3.1-24b-instruct:free",
+    ]
+
+    from openai import OpenAI
+    client = OpenAI(
+        api_key=api_key,
+        base_url="https://openrouter.ai/api/v1",
+    )
+
+    for model in models_to_try:
+        for attempt in range(2):  # 2 attempts per model
+            try:
+                print(f"[OpenRouter] Calling model: {model} (attempt {attempt + 1})")
+                response = client.chat.completions.create(
+                    model=model,
+                    messages=[{"role": "user", "content": prompt}],
+                    max_tokens=max_tokens,
+                    temperature=0.0,
+                )
+                actual_model = response.model
+                result = response.choices[0].message.content.strip()
+                print(f"[OpenRouter] Got response from {actual_model}: {result[:100]}")
+                return result
+            except Exception as e:
+                print(f"[OpenRouter] {model} attempt {attempt + 1} failed: {e}")
+                if "429" in str(e) and attempt < 1:
+                    time.sleep(2)
+                elif "404" in str(e):
+                    break  # model doesn't exist, skip to next immediately
+    return None
 
 
 # ---------------------------------------------------------------------------
