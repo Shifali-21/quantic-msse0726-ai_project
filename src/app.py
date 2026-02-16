@@ -105,8 +105,10 @@ CHAT_HTML = """<!DOCTYPE html>
     #question { width: 100%; min-height: 80px; padding: 8px; margin-bottom: 8px; }
     button { padding: 8px 16px; cursor: pointer; }
     #answer { white-space: normal; margin: 1rem 0; padding: 1rem; background: #f5f5f5; border-radius: 8px; }
-    #answer h1, #answer h2, #answer h3 { margin-top: 0.5rem; }
-    #answer ul, #answer ol { padding-left: 1.5rem; }
+    #answer h1 { font-size: 1.3rem; font-weight: 600; margin-top: 0.5rem; margin-bottom: 0.3rem; }
+    #answer h2 { font-size: 1.1rem; font-weight: 600; margin-top: 0.5rem; margin-bottom: 0.3rem; }
+    #answer h3 { font-size: 1rem; font-weight: 600; margin-top: 0.5rem; margin-bottom: 0.3rem; }
+    #answer ul, #answer ol { padding-left: 1.5rem; margin: 0.3rem 0; }
     #answer p { margin: 0.4rem 0; }
     .source { margin: 0.5rem 0; padding: 0.5rem; background: #eee; border-radius: 4px; font-size: 0.9rem; }
     .source a { color: #06c; }
