@@ -38,6 +38,17 @@ def parse_file(path: str) -> str:
         return parse_markdown_or_txt(path)
     return ""
 
+
+# chromadb>=0.4 requires an EmbeddingFunction subclass, not a plain lambda
+def make_embedding_function(model):
+    """Wrap a SentenceTransformer model as a chromadb EmbeddingFunction."""
+    from chromadb import EmbeddingFunction, Embeddings
+    class STEmbeddingFunction(EmbeddingFunction):
+        def __call__(self, input):  # noqa: A002
+            vecs = model.encode(input, show_progress_bar=False, convert_to_numpy=True)
+            return vecs.tolist()
+    return STEmbeddingFunction()
+
 def main(args):
     try:
         print("INGEST START", args)
@@ -57,17 +68,15 @@ def main(args):
         print("Model loaded.")
 
         import chromadb
-        from chromadb.config import Settings
-        client = chromadb.Client(Settings(
-            chroma_db_impl="duckdb+parquet",
-            persist_directory=args.persist_dir
-        ))
-        print("Chroma client initialized. persist_dir:", args.persist_dir)
+        # chromadb>=0.4: use PersistentClient — no more Settings(chroma_db_impl=...)
+        client = chromadb.PersistentClient(path=args.persist_dir)
+        print("Chroma PersistentClient initialized. persist_dir:", args.persist_dir)
 
+        ef = make_embedding_function(model)
         collection = client.get_or_create_collection(
             name="documents",
             metadata={"source": "local"},
-            embedding_function=lambda texts: model.encode(texts, show_progress_bar=False, convert_to_numpy=True)
+            embedding_function=ef,
         )
 
         ids, metadatas, documents = [], [], []
@@ -87,13 +96,13 @@ def main(args):
             print(f"  -> {len(chunks)} chunks")
             for i, c in enumerate(chunks):
                 ids.append(f"{Path(path).stem}__chunk_{i}")
-                metadatas.append({"source": path, "chunk_index": i})
+                metadatas.append({"source": str(path), "chunk_index": i, "filename": Path(path).name})
                 documents.append(c)
 
         if documents:
             print("Adding", len(documents), "chunks to collection...")
-            collection.add(ids=ids, documents=documents, metadatas=metadatas)
-            client.persist()
+            # chromadb>=0.4 upsert avoids duplicate ID errors on re-ingest
+            collection.upsert(ids=ids, documents=documents, metadatas=metadatas)
             print(f"Persisted {len(documents)} chunks to {args.persist_dir}")
         else:
             print("No documents found/parsed.")
@@ -108,7 +117,8 @@ if __name__ == "__main__":
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--chunk-size", type=int, default=200)
     p.add_argument("--overlap", type=int, default=50)
-    p.add_argument("--use-langchain-splitter", action="store_true", help="Use LangChain RecursiveCharacterTextSplitter")
-    p.add_argument("--debug", action="store_true", help="enable debug prints")
+    p.add_argument("--use-langchain-splitter", action="store_true",
+                   help="Use LangChain RecursiveCharacterTextSplitter")
+    p.add_argument("--debug", action="store_true", help="Enable debug prints")
     args = p.parse_args()
     main(args)

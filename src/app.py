@@ -5,6 +5,8 @@ Run: flask --app src.app:app run (from project root) or python -c "from src.app 
 import os
 import sys
 import pathlib
+from dotenv import load_dotenv
+load_dotenv()  # Load .env if present, for config like OPENAI_API_KEY
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SRC = str(ROOT / "src")
