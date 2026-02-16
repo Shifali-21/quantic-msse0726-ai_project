@@ -8,7 +8,7 @@ services:
       - key: OPENROUTER_API_KEY
         sync: false          # set manually in Render dashboard — never in this file
       - key: OPENROUTER_MODEL
-        value: meta-llama/llama-3.1-8b-instruct:free
+        value: meta-llama/llama-3.3-70b-instruct:free
       - key: CHROMA_PERSIST_DIR
         value: ./chroma_db
       - key: DATA_DIR

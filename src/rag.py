@@ -115,7 +115,7 @@ def generate_with_openrouter(prompt: str, max_tokens: int) -> str | None:
         return None
     try:
         from openai import OpenAI
-        model = os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3.1-8b-instruct:free")
+        model = os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3.3-70b-instruct:free")
         client = OpenAI(
             api_key=api_key,
             base_url="https://openrouter.ai/api/v1",
