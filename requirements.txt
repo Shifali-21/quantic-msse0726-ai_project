@@ -9,8 +9,8 @@ chromadb>=0.4.24,<0.6.0
 
 # Pydantic v2 (required by chromadb>=0.4)
 pydantic>=2.0.0,<3.0.0
-# Required by chromadb config (fixes "unable to infer type for attribute chroma_server_nofile" on Render)
-pydantic-settings>=2.0.0
+# Required by chromadb (fixes "unable to infer type for attribute chroma_server_nofile" on Render)
+pydantic-settings>=2.0.0 
 
 # Document parsing
 pdfplumber>=0.7.6

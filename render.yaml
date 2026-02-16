@@ -3,7 +3,7 @@ services:
     name: policy-rag
     runtime: python
     buildCommand: pip install -r requirements.txt && python src/ingest.py --data-dir ./data --persist-dir ./chroma_db
-    startCommand: gunicorn -w 1 -b 0.0.0.0:$PORT "src.app:app"
+    startCommand: gunicorn -w 1 -b 0.0.0.0:$PORT "src.app:app" #set an explicit startCommand
     envVars:
       - key: OPENROUTER_API_KEY
         sync: false          # set manually in Render dashboard — never in this file
