@@ -122,6 +122,14 @@ Open **http://localhost:8501**. Health: **http://127.0.0.1:8001/health**.
 
 ---
 
+## 5. Production hosting (Render)
+
+To make the app **publicly accessible** at a shareable URL, deploy to [Render](https://render.com). The repo includes `render.yaml` for a one-click (or Git-connected) deploy.
+
+**See [DEPLOY.md](DEPLOY.md)** for environment variables, deploy steps, and how to get the public URL.
+
+---
+
 ## Quick reference
 
 | Item | Location |
@@ -134,6 +142,7 @@ Open **http://localhost:8501**. Health: **http://127.0.0.1:8001/health**.
 | Flask: `/`, `/chat`, `/health` | `src/app.py` |
 | Streamlit UI + embedded health | `src/app_streamlit.py` |
 | Policy documents | `data/*.md` |
+| Production config (Render) | `render.yaml`, env: `OPENROUTER_API_KEY`, `DATA_DIR`, `CHROMA_PERSIST_DIR`, `SEED` |
 
 ---
 
