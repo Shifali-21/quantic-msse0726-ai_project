@@ -10,8 +10,9 @@ load_dotenv()  # Load .env if present, for config like OPENAI_API_KEY
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SRC = str(ROOT / "src")
-DATA_DIR = str(ROOT / "data")
-DB_DIR = str(ROOT / "chroma_db")
+# Allow override via env for production (e.g. Render)
+DATA_DIR = os.getenv("DATA_DIR", str(ROOT / "data"))
+DB_DIR = os.getenv("CHROMA_PERSIST_DIR", str(ROOT / "chroma_db"))
 if SRC not in sys.path:
     sys.path.insert(0, SRC)
 
