@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: policy-rag
+    runtime: python
+    buildCommand: pip install -r requirements.txt && python src/ingest.py --data-dir ./data --persist-dir ./chroma_db
+    startCommand: gunicorn src.app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false          # set manually in Render dashboard — never in this file
+      - key: OPENROUTER_MODEL
+        value: meta-llama/llama-3.1-8b-instruct:free
+      - key: CHROMA_PERSIST_DIR
+        value: ./chroma_db
+      - key: DATA_DIR
+        value: ./data
+      - key: SEED
+        value: "42"
+      - key: PYTHON_VERSION
+        value: "3.11"
