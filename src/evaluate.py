@@ -22,6 +22,9 @@ import pathlib
 import re
 import numpy as np
 
+from dotenv import load_dotenv
+load_dotenv()
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SRC = str(ROOT / "src")
 if SRC not in sys.path:
@@ -226,6 +229,8 @@ def run_evaluation(persist_dir: str, re_rank: bool, top_k: int, max_tokens: int,
     out_of_scope_count = 0
 
     for i, item in enumerate(EVAL_SET):
+        if i > 0:
+            time.sleep(5)  # 5-second pause between queries to avoid per-minute rate limits
         question = item["question"]
         expected_source = item["expected_source"]
         gold_kw = item["gold_keywords"]
