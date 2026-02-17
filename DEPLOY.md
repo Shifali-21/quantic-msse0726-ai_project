@@ -1,61 +1,115 @@
-# Production deployment (Render)
+# Production Deployment (Render)
 
-This guide covers deploying the Policy RAG app to [Render](https://render.com) so it is **publicly accessible** at a shareable URL.
+This guide covers the deployment of the Policy RAG app to [Render](https://render.com), where it is **publicly accessible** at a shareable URL.
+
+---
+
+## Live Deployment
+
+| Item | Details |
+|------|---------|
+| **Platform** | Render (Web Service, free tier) |
+| **Live URL** | https://quantic-msse0726-ai-project.onrender.com |
+| **Chat UI** | https://quantic-msse0726-ai-project.onrender.com/ |
+| **Chat API** | https://quantic-msse0726-ai-project.onrender.com/chat |
+| **Health check** | https://quantic-msse0726-ai-project.onrender.com/health |
+
+> **Note:** The Render free tier spins down after 15 minutes of inactivity. The first request after a period of inactivity may take 30–60 seconds while the server wakes up. This is expected behaviour on the free tier.
 
 ---
 
 ## Overview
 
-- **Platform:** Render (web service).
-- **Config:** `render.yaml` defines build and start commands; environment variables (e.g. API keys, DB paths) are set in the Render Dashboard.
-- **Public URL:** After deploy, Render provides a URL like `https://policy-rag-xxxx.onrender.com` for the chat UI, API, and health check.
+- **Platform:** Render (Web Service).
+- **Config:** `render.yaml` in the project root defines the build and start commands. Environment variables (e.g. API keys, DB paths) are set in the Render Dashboard — never committed to the repo.
+- **LLM:** OpenRouter free tier using `google/gemma-3-27b-it:free` as the primary model, with a fallback chain of `google/gemma-3-4b-it:free`, `google/gemma-3n-e4b-it:free`, and `nvidia/nemotron-3-nano-30b-a3b:free`.
+- **Vector DB:** ChromaDB `PersistentClient` built at deploy time by running `src/ingest.py` as part of the build command.
+- **Web framework:** Flask served via Gunicorn in production.
 
 ---
 
-## Environment variables
+## Environment Variables
 
 Configure these in the **Render Dashboard** → your service → **Environment**. **Never commit API keys** to the repo.
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `OPENROUTER_API_KEY` | **Yes** (for LLM answers) | API key from [OpenRouter](https://openrouter.ai). Used by `src/rag.py` for generation. |
-| `OPENROUTER_MODEL` | No | Model ID (default: `meta-llama/llama-3.3-70b-instruct:free`). |
-| `DATA_DIR` | No | Path to policy documents (default: `./data`). Override if you mount data elsewhere. |
-| `CHROMA_PERSIST_DIR` | No | Chroma DB path (default: `./chroma_db`). Set if using a different path. |
-| `SEED` | No | Seed for reproducibility (default: `42`). Used by ingest and evaluation. |
+| Variable | Required | Value Used | Description |
+|----------|----------|------------|-------------|
+| `OPENROUTER_API_KEY` | **Yes** | Secret | API key from [OpenRouter](https://openrouter.ai). Used by `src/rag.py` for LLM generation. |
+| `OPENROUTER_MODEL` | No | `google/gemma-3-27b-it:free` | Primary free model. Falls back to other free models if rate limited. |
+| `CHROMA_PERSIST_DIR` | No | `./chroma_db` | Chroma DB path. Built at deploy time by ingest step. |
+| `DATA_DIR` | No | `./data` | Path to policy markdown documents. |
+| `SEED` | No | `42` | Reproducibility seed for ingest and evaluation. |
 
-- **Local development:** Put `OPENROUTER_API_KEY` (and optional `OPENROUTER_MODEL`) in a `.env` file in the project root; `python-dotenv` loads it. `.env` is in `.gitignore`.
-- **Render:** In the Dashboard → **Environment**, add `OPENROUTER_API_KEY` as a **Secret**. Other vars have defaults in `render.yaml`; override in the dashboard if needed.
-
----
-
-## Deploy steps (Render)
-
-1. **Push your repo to GitHub** (or connect Render to your Git provider).
-
-2. **Create a Web Service on Render:**
-   - [Render Dashboard](https://dashboard.render.com) → **New** → **Web Service**.
-   - Connect the repository. Render can detect `render.yaml` (Blueprint) or you can configure the service manually.
-
-3. **If using Blueprint:** Deploy from the Blueprint; it will use `render.yaml` for build/start. Env var **keys** can be defined there; **secret values** (e.g. `OPENROUTER_API_KEY`) must be set in the Dashboard.
-
-4. **Set the API key:** In the service → **Environment**, add:
-   - Key: `OPENROUTER_API_KEY`
-   - Value: your OpenRouter API key (mark as **Secret**).
-
-5. **Deploy:** Trigger a deploy (manual or on push).  
-   - **Build:** `pip install -r requirements.txt` then `python src/ingest.py --data-dir ./data --persist-dir ./chroma_db` (creates the vector DB).  
-   - **Start:** `gunicorn src.app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120`.
-
-6. **Public URL:** After a successful deploy, Render shows the service URL (e.g. `https://policy-rag-xxxx.onrender.com`). This URL is **public and shareable**.  
-   - **`/`** — Chat UI  
-   - **`/chat`** — POST API (questions → answers with citations)  
-   - **`/health`** — JSON health check  
+- **Local development:** Add `OPENROUTER_API_KEY` and `OPENROUTER_MODEL` to a `.env` file in the project root. `python-dotenv` loads it automatically. `.env` is gitignored — never commit it.
+- **Render:** In the Dashboard → **Environment**, add `OPENROUTER_API_KEY` as a **Secret**. All other variables have sensible defaults in `render.yaml`.
 
 ---
 
-## Summary
+## Deploy Steps
 
-- **Configure env vars** in the Render Dashboard (especially `OPENROUTER_API_KEY`).
-- **Build** installs dependencies and runs ingest; **start** runs Gunicorn. The app reads `DATA_DIR` and `CHROMA_PERSIST_DIR` from the environment when set.
-- The **shareable URL** is the Render service URL; no extra step is required for public access.
+### 1. Push repo to GitHub
+Ensure the latest code including `render.yaml` is on the `main` branch.
+
+### 2. Create a Web Service on Render
+- Go to [Render Dashboard](https://dashboard.render.com) → **New** → **Web Service**
+- Connect the GitHub repository
+- Render detects `render.yaml` automatically (Blueprint deploy)
+
+### 3. Set the API key
+In the service → **Environment** tab:
+- Key: `OPENROUTER_API_KEY`
+- Value: your OpenRouter API key
+- Mark as **Secret**
+
+### 4. Trigger the deploy
+Render runs the following from `render.yaml`:
+
+**Build command:**
+```bash
+pip install -r requirements.txt && python src/ingest.py --data-dir ./data --persist-dir ./chroma_db
+```
+Installs all dependencies and builds the Chroma vector DB from the 15 policy documents in `./data`.
+
+**Start command:**
+```bash
+gunicorn src.app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
+```
+Starts the Flask app via Gunicorn. `$PORT` is automatically assigned by Render.
+
+### 5. Verify the deployment
+Once the deploy shows green in the Render Dashboard, verify all three endpoints:
+
+```
+GET  https://quantic-msse0726-ai-project.onrender.com/health
+→ {"status": "ok", "db_ready": true, "data_files": 15}
+
+GET  https://quantic-msse0726-ai-project.onrender.com/
+→ Chat UI loads in browser
+
+POST https://quantic-msse0726-ai-project.onrender.com/chat
+     {"question": "What is the remote work policy?"}
+→ {"answer": "...", "sources": [...], "refused": false}
+```
+
+---
+
+## CI/CD Integration
+
+The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push and pull request to `main`:
+- Installs dependencies
+- Runs the Flask import check
+- Runs `pytest tests/ -q`
+
+On a successful merge to `main`, Render automatically redeploys the latest version via its GitHub integration.
+
+---
+
+## Troubleshooting
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| Slow first response | Render free tier spin-down | Wait 30–60s for server to wake up |
+| `db_ready: false` in health | Ingest didn't run at build time | Check Render build logs for ingest errors |
+| LLM returning extractive fallback | `OPENROUTER_API_KEY` not set | Add key in Render Dashboard → Environment |
+| 429 rate limit errors | Free model congestion | App automatically falls back to next model in chain |
+| Build timeout | Heavy dependencies (torch, sentence-transformers) | Render free tier has a 15-min build limit; retry if it times out |
