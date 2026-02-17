@@ -113,11 +113,11 @@ def generate_with_openrouter(prompt: str, max_tokens: int) -> str | None:
 
     # Ordered list of free models to try — if first is rate limited, try next
     models_to_try = [
-        os.getenv("OPENROUTER_MODEL", "openrouter/free"),
-        "meta-llama/llama-3.3-70b-instruct:free",
-        "mistralai/mistral-small-3.1-24b-instruct:free",
+        os.getenv("OPENROUTER_MODEL", "google/gemma-3-27b-it:free"),
+        "google/gemma-3-4b-it:free",
+        "google/gemma-3n-e4b-it:free",
+        "nvidia/nemotron-3-nano-30b-a3b:free",
     ]
-
     from openai import OpenAI
     client = OpenAI(
         api_key=api_key,
