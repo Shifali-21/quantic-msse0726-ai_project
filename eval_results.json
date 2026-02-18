@@ -1,26 +1,17 @@
 {
-  "config": {
-    "persist_dir": "./chroma_db",
-    "re_rank": true,
-    "top_k": 5,
-    "max_tokens": 400,
-    "seed": 42
-  },
-  "metrics": {
-    "groundedness_pct": 52.6,
-    "citation_accuracy_pct": 52.6,
-    "refusal_accuracy_pct": 100.0,
-    "latency_p50_s": 5.439,
-    "latency_p95_s": 27.541,
-    "n_questions": 20,
-    "n_in_scope": 19,
-    "n_out_of_scope": 1
-  },
+  "total_questions": 20,
+  "in_scope_questions": 19,
+  "out_of_scope_questions": 1,
+  "groundedness_pct": 84.2,
+  "citation_accuracy_pct": 78.9,
+  "refusal_accuracy_pct": 100.0,
+  "latency_p50_s": 26.384,
+  "latency_p95_s": 33.194,
   "results": [
     {
-      "question": "What equipment is the company required to provide for remote workers?",
+      "question": "What type of device must remote workers use?",
       "expected_source": "remote_work",
-      "answer": "The company requires remote workers to use a company-issued or approved device [source: remote_work.md, chunk: 0]. Employees receive devices based on job requirements [source: equipment_allocation.md, chunk: 0].",
+      "answer": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate devices. - Secure home Wi\u2011Fi with strong encryption. ## Communication Expectations - Attend virtual meetings on time. - Use video conferencing appropriately. - Set working hours that mirror on\u2011site requirements. ## Support IT provides remote troubleshooting and device management.\n\n[source: remote_work.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
       "sources": [
         {
           "source": "remote_work.md",
@@ -49,15 +40,15 @@
         }
       ],
       "refused": false,
-      "latency_s": 13.5637,
+      "latency_s": 34.41,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
     },
     {
-      "question": "What are the core working hours for remote employees?",
+      "question": "What are the communication expectations for remote employees?",
       "expected_source": "remote_work",
-      "answer": "Remote employees are expected to set working hours that mirror on-site requirements [source: remote_work.md, chunk: 0]. Standard working hours for all employees are Monday\u2013Friday, 9 AM\u20135 PM [source: attendance_timekeeping.md, chunk: 0].",
+      "answer": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate devices. - Secure home Wi\u2011Fi with strong encryption. ## Communication Expectations - Attend virtual meetings on time. - Use video conferencing appropriately. - Set working hours that mirror on\u2011site requirements. ## Support IT provides remote troubleshooting and device management.\n\n[source: remote_work.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
       "sources": [
         {
           "source": "remote_work.md",
@@ -65,14 +56,46 @@
           "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
         },
         {
+          "source": "code_of_conduct.md",
+          "chunk_index": 0,
+          "snippet": "# Code of Conduct Policy ## Purpose This policy outlines the ethical, professional, and interpersonal standards expected from all members of the organization. ## Scope All employees, contractors, consultants, interns, and temporary workers. ## Guiding Principles - Integrity in all business interactions. - Respectful and inclusive communication. - Zero tolerance for harassment or retaliation. - Com..."
+        },
+        {
+          "source": "social_media.md",
+          "chunk_index": 0,
+          "snippet": "# Social Media & Public Communication Policy ## Purpose To protect organizational reputation and ensure safe communication practices. ## Personal Use - Employees may use personal accounts but must not imply official representation. - Confidential information must never be shared. ## Professional Use - Only designated staff may post on official channels. - All messaging must align with brand and co..."
+        },
+        {
+          "source": "information_security.md",
+          "chunk_index": 0,
+          "snippet": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest ..."
+        },
+        {
+          "source": "acceptable_use.md",
+          "chunk_index": 0,
+          "snippet": "# Acceptable Use of Technology Policy ## Purpose To define proper and safe use of organizational technology resources. ## Authorized Use - Accessing systems necessary for job duties. - Using corporate email for business communication. - Engaging in professional collaboration using approved tools. ## Prohibited Use - Installing unauthorized applications. - Accessing inappropriate, unlawful, or harm..."
+        }
+      ],
+      "refused": false,
+      "latency_s": 27.39,
+      "grounded": true,
+      "citation_accurate": true,
+      "refusal_correct": null
+    },
+    {
+      "question": "What are the standard working hours?",
+      "expected_source": "attendance_timekeeping",
+      "answer": "# Attendance & Timekeeping Policy ## Purpose To ensure accurate reporting of work hours and consistent employee availability. ## Standards - Standard working hours: Monday\u2013Friday, 9 AM\u20135 PM. - All employees must log hours via the timekeeping system. - Overtime requires pre\u2011approval from supervisors. ## Absence Reporting - Notify supervisor at least one hour prior to shift. - Submit documentation for medical or emergency leave. - Repeated tardiness may lead to corrective actions. ## Records Management Timekeeping data is stored securely by HR for compliance audits.\n\n[source: attendance_timekeeping.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "sources": [
+        {
           "source": "attendance_timekeeping.md",
           "chunk_index": 0,
           "snippet": "# Attendance & Timekeeping Policy ## Purpose To ensure accurate reporting of work hours and consistent employee availability. ## Standards - Standard working hours: Monday\u2013Friday, 9 AM\u20135 PM. - All employees must log hours via the timekeeping system. - Overtime requires pre\u2011approval from supervisors. ## Absence Reporting - Notify supervisor at least one hour prior to shift. - Submit documentation f..."
         },
         {
-          "source": "training_and_development.md",
+          "source": "remote_work.md",
           "chunk_index": 0,
-          "snippet": "# Training & Development Policy ## Purpose To promote continuous learning and ensure employees have necessary skills. ## Core Training - Onboarding orientation - Security awareness - Anti\u2011harassment training - Job\u2011specific skills training ## Development Opportunities - Workshops and webinars - Certification programs - Mentorship initiatives ## Tracking HR monitors training participation and ensure..."
+          "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
         },
         {
           "source": "code_of_conduct.md",
@@ -83,51 +106,71 @@
           "source": "workplace_safety.md",
           "chunk_index": 0,
           "snippet": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - ..."
+        },
+        {
+          "source": "anti_harassment.md",
+          "chunk_index": 0,
+          "snippet": "# Anti\u2011Harassment & Anti\u2011Discrimination Policy ## Purpose To maintain a safe, inclusive workplace free from harassment, discrimination, and retaliation. ## Definitions - **Harassment:** Any unwelcome conduct creating an intimidating environment. - **Discrimination:** Unfair treatment based on protected characteristics. ## Examples of Harassment - Offensive jokes or comments. - Unwanted physical co..."
         }
       ],
       "refused": false,
-      "latency_s": 6.3351,
+      "latency_s": 25.44,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
     },
     {
-      "question": "How many days of paid time off do full-time employees receive per year?",
+      "question": "How much advance notice is required before an absence?",
       "expected_source": "attendance_timekeeping",
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.9882,
+      "latency_s": 3.5,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
     },
     {
-      "question": "What is the policy for reporting an unplanned absence?",
-      "expected_source": "attendance_timekeeping",
-      "answer": "I can only answer questions about the provided policies. I don't have information on that.",
-      "sources": [],
-      "refused": true,
-      "latency_s": 3.8611,
-      "grounded": false,
-      "citation_accurate": false,
-      "refusal_correct": null
-    },
-    {
-      "question": "What is the maximum daily meal allowance when traveling for business?",
+      "question": "What types of expenses are allowable for reimbursement?",
       "expected_source": "expense_reimbursement",
-      "answer": "I can only answer questions about the provided policies. I don't have information on that.",
-      "sources": [],
-      "refused": true,
-      "latency_s": 3.8411,
-      "grounded": false,
-      "citation_accurate": false,
+      "answer": "# Expense & Reimbursement Policy ## Purpose To standardize reimbursement for business\u2011related expenses. ## Allowable Expenses - Travel: airfare, lodging, transportation. - Meals during business travel. - Office supplies or equipment approved by management. ## Requirements - Obtain approval before incurring major expenses. - Provide itemized receipts. - Submit reimbursement claims within 30 days. ## Review Process Finance reviews each submission for compliance with guidelines.\n\n[source: expense_reimbursement.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "sources": [
+        {
+          "source": "expense_reimbursement.md",
+          "chunk_index": 0,
+          "snippet": "# Expense & Reimbursement Policy ## Purpose To standardize reimbursement for business\u2011related expenses. ## Allowable Expenses - Travel: airfare, lodging, transportation. - Meals during business travel. - Office supplies or equipment approved by management. ## Requirements - Obtain approval before incurring major expenses. - Provide itemized receipts. - Submit reimbursement claims within 30 days. #..."
+        },
+        {
+          "source": "code_of_conduct.md",
+          "chunk_index": 0,
+          "snippet": "# Code of Conduct Policy ## Purpose This policy outlines the ethical, professional, and interpersonal standards expected from all members of the organization. ## Scope All employees, contractors, consultants, interns, and temporary workers. ## Guiding Principles - Integrity in all business interactions. - Respectful and inclusive communication. - Zero tolerance for harassment or retaliation. - Com..."
+        },
+        {
+          "source": "remote_work.md",
+          "chunk_index": 0,
+          "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
+        },
+        {
+          "source": "data_privacy.md",
+          "chunk_index": 0,
+          "snippet": "# Data Privacy & Confidentiality Policy ## Purpose To establish responsible handling of personal, confidential, and sensitive information. ## Categories of Data - Public - Internal - Confidential - Highly Sensitive ## Employee Requirements - Access only the minimum data needed to perform duties. - Do not discuss confidential data in public or insecure spaces. - Use approved document\u2011sharing platfo..."
+        },
+        {
+          "source": "equipment_allocation.md",
+          "chunk_index": 0,
+          "snippet": "# Equipment Allocation & Asset Management Policy ## Purpose To manage organizational equipment consistently and securely. ## Issuance - Employees receive devices based on job requirements. - All equipment must be signed out and tracked. ## Responsibilities - Keep devices in good condition. - Report damage or loss within 24 hours. - Return all equipment upon role change or separation. ## Maintenanc..."
+        }
+      ],
+      "refused": false,
+      "latency_s": 33.13,
+      "grounded": true,
+      "citation_accurate": true,
       "refusal_correct": null
     },
     {
-      "question": "How long do employees have to submit an expense report after incurring costs?",
+      "question": "Within how many days must reimbursement claims be submitted?",
       "expected_source": "expense_reimbursement",
-      "answer": "Employees must submit reimbursement claims within 30 days of incurring the expenses [source: expense_reimbursement.md, chunk: 0].",
+      "answer": "# Expense & Reimbursement Policy ## Purpose To standardize reimbursement for business\u2011related expenses. ## Allowable Expenses - Travel: airfare, lodging, transportation. - Meals during business travel. - Office supplies or equipment approved by management. ## Requirements - Obtain approval before incurring major expenses. - Provide itemized receipts. - Submit reimbursement claims within 30 days. ## Review Process Finance reviews each submission for compliance with guidelines.\n\n[source: expense_reimbursement.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
       "sources": [
         {
           "source": "expense_reimbursement.md",
@@ -156,50 +199,13 @@
         }
       ],
       "refused": false,
-      "latency_s": 12.7479,
+      "latency_s": 30.18,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
     },
     {
-      "question": "What are the password requirements under the information security policy?",
-      "expected_source": "information_security",
-      "answer": "Strong password creation and secure storage are required [source: information_security.md, chunk: 0]. Multi-factor authentication is also required for system access [source: information_security.md, chunk: 0].  Additionally, use a company VPN when accessing internal systems [source: remote_work.md, chunk: 0] and secure home Wi-Fi with strong encryption [source: remote_work.md, chunk: 0].  Finally, do not allow family members to use corporate devices [source: remote_work.md, chunk: 0]. I can only answer questions about the provided policies. I don't have information on that.",
-      "sources": [
-        {
-          "source": "information_security.md",
-          "chunk_index": 0,
-          "snippet": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest ..."
-        },
-        {
-          "source": "data_privacy.md",
-          "chunk_index": 0,
-          "snippet": "# Data Privacy & Confidentiality Policy ## Purpose To establish responsible handling of personal, confidential, and sensitive information. ## Categories of Data - Public - Internal - Confidential - Highly Sensitive ## Employee Requirements - Access only the minimum data needed to perform duties. - Do not discuss confidential data in public or insecure spaces. - Use approved document\u2011sharing platfo..."
-        },
-        {
-          "source": "remote_work.md",
-          "chunk_index": 0,
-          "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
-        },
-        {
-          "source": "code_of_conduct.md",
-          "chunk_index": 0,
-          "snippet": "# Code of Conduct Policy ## Purpose This policy outlines the ethical, professional, and interpersonal standards expected from all members of the organization. ## Scope All employees, contractors, consultants, interns, and temporary workers. ## Guiding Principles - Integrity in all business interactions. - Respectful and inclusive communication. - Zero tolerance for harassment or retaliation. - Com..."
-        },
-        {
-          "source": "acceptable_use.md",
-          "chunk_index": 0,
-          "snippet": "# Acceptable Use of Technology Policy ## Purpose To define proper and safe use of organizational technology resources. ## Authorized Use - Accessing systems necessary for job duties. - Using corporate email for business communication. - Engaging in professional collaboration using approved tools. ## Prohibited Use - Installing unauthorized applications. - Accessing inappropriate, unlawful, or harm..."
-        }
-      ],
-      "refused": false,
-      "latency_s": 14.7901,
-      "grounded": true,
-      "citation_accurate": true,
-      "refusal_correct": null
-    },
-    {
-      "question": "What must employees do if they suspect a security breach?",
+      "question": "What authentication method is required for system access?",
       "expected_source": "information_security",
       "answer": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest and in transit. - Strong password creation and secure storage. - Prohibition of unapproved third\u2011party apps. ## Operational Controls - Network monitoring and threat detection. - Regular patching of servers and endpoints. - Backup and disaster recovery procedures. - Logging of access and security events. ## Incident Reporting All incidents must be reported immediately to the Security Response Team....\n\n[source: information_security.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
       "sources": [
@@ -209,19 +215,56 @@
           "snippet": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest ..."
         },
         {
+          "source": "remote_work.md",
+          "chunk_index": 0,
+          "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
+        },
+        {
           "source": "incident_response.md",
           "chunk_index": 0,
           "snippet": "# Incident Response Policy ## Purpose To guide employees through identification, reporting, and mitigation of security incidents. ## Incident Types - Malware or ransomware infection - Unauthorized data access - Lost or stolen device - Phishing attacks ## Response Process 1. Identify and isolate affected systems. 2. Report immediately to IT Security. 3. Preserve evidence. 4. Follow recovery procedu..."
         },
         {
+          "source": "acceptable_use.md",
+          "chunk_index": 0,
+          "snippet": "# Acceptable Use of Technology Policy ## Purpose To define proper and safe use of organizational technology resources. ## Authorized Use - Accessing systems necessary for job duties. - Using corporate email for business communication. - Engaging in professional collaboration using approved tools. ## Prohibited Use - Installing unauthorized applications. - Accessing inappropriate, unlawful, or harm..."
+        },
+        {
           "source": "data_privacy.md",
           "chunk_index": 0,
           "snippet": "# Data Privacy & Confidentiality Policy ## Purpose To establish responsible handling of personal, confidential, and sensitive information. ## Categories of Data - Public - Internal - Confidential - Highly Sensitive ## Employee Requirements - Access only the minimum data needed to perform duties. - Do not discuss confidential data in public or insecure spaces. - Use approved document\u2011sharing platfo..."
+        }
+      ],
+      "refused": false,
+      "latency_s": 26.67,
+      "grounded": true,
+      "citation_accurate": true,
+      "refusal_correct": null
+    },
+    {
+      "question": "Who should employees report security incidents to?",
+      "expected_source": "information_security",
+      "answer": "# Incident Response Policy ## Purpose To guide employees through identification, reporting, and mitigation of security incidents. ## Incident Types - Malware or ransomware infection - Unauthorized data access - Lost or stolen device - Phishing attacks ## Response Process 1. Identify and isolate affected systems. 2. Report immediately to IT Security. 3. Preserve evidence. 4. Follow recovery procedures. ## Post\u2011Incident A review is conducted to identify improvements and update security practices.\n\n[source: incident_response.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "sources": [
+        {
+          "source": "incident_response.md",
+          "chunk_index": 0,
+          "snippet": "# Incident Response Policy ## Purpose To guide employees through identification, reporting, and mitigation of security incidents. ## Incident Types - Malware or ransomware infection - Unauthorized data access - Lost or stolen device - Phishing attacks ## Response Process 1. Identify and isolate affected systems. 2. Report immediately to IT Security. 3. Preserve evidence. 4. Follow recovery procedu..."
+        },
+        {
+          "source": "information_security.md",
+          "chunk_index": 0,
+          "snippet": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest ..."
         },
         {
           "source": "workplace_safety.md",
           "chunk_index": 0,
           "snippet": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - ..."
+        },
+        {
+          "source": "data_privacy.md",
+          "chunk_index": 0,
+          "snippet": "# Data Privacy & Confidentiality Policy ## Purpose To establish responsible handling of personal, confidential, and sensitive information. ## Categories of Data - Public - Internal - Confidential - Highly Sensitive ## Employee Requirements - Access only the minimum data needed to perform duties. - Do not discuss confidential data in public or insecure spaces. - Use approved document\u2011sharing platfo..."
         },
         {
           "source": "code_of_conduct.md",
@@ -230,25 +273,30 @@
         }
       ],
       "refused": false,
-      "latency_s": 27.495,
+      "latency_s": 26.3,
       "grounded": true,
-      "citation_accurate": true,
+      "citation_accurate": false,
       "refusal_correct": null
     },
     {
-      "question": "Are employees allowed to use company devices for personal activities?",
+      "question": "What types of websites are employees prohibited from accessing?",
       "expected_source": "acceptable_use",
-      "answer": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate devices. - Secure home Wi\u2011Fi with strong encryption. ## Communication Expectations - Attend virtual meetings on time. - Use video conferencing appropriately. - Set working hours that mirror on\u2011site requirements. ## Support IT provides remote troubleshooting and device management.\n\n[source: remote_work.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "answer": "# Acceptable Use of Technology Policy ## Purpose To define proper and safe use of organizational technology resources. ## Authorized Use - Accessing systems necessary for job duties. - Using corporate email for business communication. - Engaging in professional collaboration using approved tools. ## Prohibited Use - Installing unauthorized applications. - Accessing inappropriate, unlawful, or harmful websites. - Engaging in personal commercial activities. - Attempting to bypass network restrictions. ## Data Handling - Store files only on approved drives. - Do not upload sensitive data to personal cloud storage. - Follow retention and archival guidelines. ## Monitoring The organization may log and monitor network usage to ensure compliance.\n\n[source: acceptable_use.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
       "sources": [
-        {
-          "source": "remote_work.md",
-          "chunk_index": 0,
-          "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
-        },
         {
           "source": "acceptable_use.md",
           "chunk_index": 0,
           "snippet": "# Acceptable Use of Technology Policy ## Purpose To define proper and safe use of organizational technology resources. ## Authorized Use - Accessing systems necessary for job duties. - Using corporate email for business communication. - Engaging in professional collaboration using approved tools. ## Prohibited Use - Installing unauthorized applications. - Accessing inappropriate, unlawful, or harm..."
+        },
+        {
+          "source": "information_security.md",
+          "chunk_index": 0,
+          "snippet": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest ..."
+        },
+        {
+          "source": "data_privacy.md",
+          "chunk_index": 0,
+          "snippet": "# Data Privacy & Confidentiality Policy ## Purpose To establish responsible handling of personal, confidential, and sensitive information. ## Categories of Data - Public - Internal - Confidential - Highly Sensitive ## Employee Requirements - Access only the minimum data needed to perform duties. - Do not discuss confidential data in public or insecure spaces. - Use approved document\u2011sharing platfo..."
         },
         {
           "source": "social_media.md",
@@ -256,35 +304,30 @@
           "snippet": "# Social Media & Public Communication Policy ## Purpose To protect organizational reputation and ensure safe communication practices. ## Personal Use - Employees may use personal accounts but must not imply official representation. - Confidential information must never be shared. ## Professional Use - Only designated staff may post on official channels. - All messaging must align with brand and co..."
         },
         {
-          "source": "equipment_allocation.md",
+          "source": "remote_work.md",
           "chunk_index": 0,
-          "snippet": "# Equipment Allocation & Asset Management Policy ## Purpose To manage organizational equipment consistently and securely. ## Issuance - Employees receive devices based on job requirements. - All equipment must be signed out and tracked. ## Responsibilities - Keep devices in good condition. - Report damage or loss within 24 hours. - Return all equipment upon role change or separation. ## Maintenanc..."
-        },
-        {
-          "source": "workplace_safety.md",
-          "chunk_index": 0,
-          "snippet": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - ..."
+          "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
         }
       ],
       "refused": false,
-      "latency_s": 25.5063,
+      "latency_s": 29.34,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
     },
     {
-      "question": "What is the company's policy on conflicts of interest?",
-      "expected_source": "code_of_conduct",
+      "question": "Where should employees store their work files?",
+      "expected_source": "acceptable_use",
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.4991,
+      "latency_s": 3.46,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
     },
     {
-      "question": "How should an employee report harassment or discrimination?",
+      "question": "What are three ways employees can report harassment concerns?",
       "expected_source": "anti_harassment",
       "answer": "# Anti\u2011Harassment & Anti\u2011Discrimination Policy ## Purpose To maintain a safe, inclusive workplace free from harassment, discrimination, and retaliation. ## Definitions - **Harassment:** Any unwelcome conduct creating an intimidating environment. - **Discrimination:** Unfair treatment based on protected characteristics. ## Examples of Harassment - Offensive jokes or comments. - Unwanted physical contact. - Repeated unwelcome invitations. - Posting derogatory material in shared spaces. ## Reporting Employees may report concerns: - Directly to HR - Through an anonymous reporting line - To any supervisor ## Investigation 1. HR reviews all complaints. 2. Interviews and documentation collected. 3. Determination letter issued with next steps. ## Support Employees may request accommodations, sched...\n\n[source: anti_harassment.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
       "sources": [
@@ -309,31 +352,42 @@
           "snippet": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest ..."
         },
         {
-          "source": "attendance_timekeeping.md",
+          "source": "workplace_safety.md",
           "chunk_index": 0,
-          "snippet": "# Attendance & Timekeeping Policy ## Purpose To ensure accurate reporting of work hours and consistent employee availability. ## Standards - Standard working hours: Monday\u2013Friday, 9 AM\u20135 PM. - All employees must log hours via the timekeeping system. - Overtime requires pre\u2011approval from supervisors. ## Absence Reporting - Notify supervisor at least one hour prior to shift. - Submit documentation f..."
+          "snippet": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - ..."
         }
       ],
       "refused": false,
-      "latency_s": 28.0232,
+      "latency_s": 26.47,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
     },
     {
-      "question": "How must employees handle personal data belonging to customers?",
+      "question": "What principle should guide how much customer data employees access?",
       "expected_source": "data_privacy",
-      "answer": "# Data Privacy & Confidentiality Policy ## Purpose To establish responsible handling of personal, confidential, and sensitive information. ## Categories of Data - Public - Internal - Confidential - Highly Sensitive ## Employee Requirements - Access only the minimum data needed to perform duties. - Do not discuss confidential data in public or insecure spaces. - Use approved document\u2011sharing platforms. ## Storage & Retention - Follow retention schedules. - Dispose of confidential documents securely (shredding or secure deletion). ## Breach Response Report suspected data breaches immediately to IT or the Privacy Officer.\n\n[source: data_privacy.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "answer": "I can only answer questions about the provided policies. I don't have information on that.",
+      "sources": [],
+      "refused": true,
+      "latency_s": 3.83,
+      "grounded": false,
+      "citation_accurate": false,
+      "refusal_correct": null
+    },
+    {
+      "question": "What must employees do when equipment is damaged or lost?",
+      "expected_source": "equipment_allocation",
+      "answer": "# Equipment Allocation & Asset Management Policy ## Purpose To manage organizational equipment consistently and securely. ## Issuance - Employees receive devices based on job requirements. - All equipment must be signed out and tracked. ## Responsibilities - Keep devices in good condition. - Report damage or loss within 24 hours. - Return all equipment upon role change or separation. ## Maintenance IT ensures regular updates and hardware checks.\n\n[source: equipment_allocation.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
       "sources": [
         {
-          "source": "data_privacy.md",
+          "source": "equipment_allocation.md",
           "chunk_index": 0,
-          "snippet": "# Data Privacy & Confidentiality Policy ## Purpose To establish responsible handling of personal, confidential, and sensitive information. ## Categories of Data - Public - Internal - Confidential - Highly Sensitive ## Employee Requirements - Access only the minimum data needed to perform duties. - Do not discuss confidential data in public or insecure spaces. - Use approved document\u2011sharing platfo..."
+          "snippet": "# Equipment Allocation & Asset Management Policy ## Purpose To manage organizational equipment consistently and securely. ## Issuance - Employees receive devices based on job requirements. - All equipment must be signed out and tracked. ## Responsibilities - Keep devices in good condition. - Report damage or loss within 24 hours. - Return all equipment upon role change or separation. ## Maintenanc..."
         },
         {
-          "source": "social_media.md",
+          "source": "incident_response.md",
           "chunk_index": 0,
-          "snippet": "# Social Media & Public Communication Policy ## Purpose To protect organizational reputation and ensure safe communication practices. ## Personal Use - Employees may use personal accounts but must not imply official representation. - Confidential information must never be shared. ## Professional Use - Only designated staff may post on official channels. - All messaging must align with brand and co..."
+          "snippet": "# Incident Response Policy ## Purpose To guide employees through identification, reporting, and mitigation of security incidents. ## Incident Types - Malware or ransomware infection - Unauthorized data access - Lost or stolen device - Phishing attacks ## Response Process 1. Identify and isolate affected systems. 2. Report immediately to IT Security. 3. Preserve evidence. 4. Follow recovery procedu..."
         },
         {
           "source": "information_security.md",
@@ -341,57 +395,61 @@
           "snippet": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest ..."
         },
         {
-          "source": "acceptable_use.md",
+          "source": "workplace_safety.md",
           "chunk_index": 0,
-          "snippet": "# Acceptable Use of Technology Policy ## Purpose To define proper and safe use of organizational technology resources. ## Authorized Use - Accessing systems necessary for job duties. - Using corporate email for business communication. - Engaging in professional collaboration using approved tools. ## Prohibited Use - Installing unauthorized applications. - Accessing inappropriate, unlawful, or harm..."
+          "snippet": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - ..."
         },
         {
-          "source": "equipment_allocation.md",
+          "source": "remote_work.md",
           "chunk_index": 0,
-          "snippet": "# Equipment Allocation & Asset Management Policy ## Purpose To manage organizational equipment consistently and securely. ## Issuance - Employees receive devices based on job requirements. - All equipment must be signed out and tracked. ## Responsibilities - Keep devices in good condition. - Report damage or loss within 24 hours. - Return all equipment upon role change or separation. ## Maintenanc..."
+          "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
         }
       ],
       "refused": false,
-      "latency_s": 27.5155,
+      "latency_s": 25.28,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
     },
     {
-      "question": "What happens to company equipment when an employee leaves the organization?",
-      "expected_source": "equipment_allocation",
-      "answer": "I can only answer questions about the provided policies. I don't have information on that.",
-      "sources": [],
-      "refused": true,
-      "latency_s": 4.2815,
-      "grounded": false,
-      "citation_accurate": false,
-      "refusal_correct": null
-    },
-    {
-      "question": "How often are formal performance reviews conducted?",
+      "question": "What are the main components of the performance review process?",
       "expected_source": "performance_review",
-      "answer": "I can only answer questions about the provided policies. I don't have information on that.",
-      "sources": [],
-      "refused": true,
-      "latency_s": 4.5432,
-      "grounded": false,
-      "citation_accurate": false,
+      "answer": "# Performance Review & Development Policy ## Purpose To support continuous improvement and professional growth. ## Components - Annual evaluation - Mid\u2011year progress review - Goal setting and career development planning ## Evaluation Areas - Job knowledge - Quality of work - Collaboration and communication - Initiative and problem\u2011solving ## Process 1. Employee self\u2011assessment. 2. Manager evaluation. 3. Performance meeting. 4. Documentation stored in HR systems.\n\n[source: performance_review.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "sources": [
+        {
+          "source": "performance_review.md",
+          "chunk_index": 0,
+          "snippet": "# Performance Review & Development Policy ## Purpose To support continuous improvement and professional growth. ## Components - Annual evaluation - Mid\u2011year progress review - Goal setting and career development planning ## Evaluation Areas - Job knowledge - Quality of work - Collaboration and communication - Initiative and problem\u2011solving ## Process 1. Employee self\u2011assessment. 2. Manager evaluati..."
+        },
+        {
+          "source": "incident_response.md",
+          "chunk_index": 0,
+          "snippet": "# Incident Response Policy ## Purpose To guide employees through identification, reporting, and mitigation of security incidents. ## Incident Types - Malware or ransomware infection - Unauthorized data access - Lost or stolen device - Phishing attacks ## Response Process 1. Identify and isolate affected systems. 2. Report immediately to IT Security. 3. Preserve evidence. 4. Follow recovery procedu..."
+        },
+        {
+          "source": "vendor_management.md",
+          "chunk_index": 0,
+          "snippet": "# Vendor Management & Third\u2011Party Risk Policy ## Purpose To ensure third\u2011party partners meet security, compliance, and operational standards. ## Vendor Evaluation - Assess service quality and risk level. - Review data privacy practices. - Confirm contract terms (confidentiality, security, breach notifications). ## Monitoring - Annual vendor reviews. - Compliance attestation where required. ## Term..."
+        },
+        {
+          "source": "information_security.md",
+          "chunk_index": 0,
+          "snippet": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest ..."
+        },
+        {
+          "source": "workplace_safety.md",
+          "chunk_index": 0,
+          "snippet": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - ..."
+        }
+      ],
+      "refused": false,
+      "latency_s": 25.38,
+      "grounded": true,
+      "citation_accurate": true,
       "refusal_correct": null
     },
     {
-      "question": "What is the annual training budget allocated per employee?",
-      "expected_source": "training_and_development",
-      "answer": "I can only answer questions about the provided policies. I don't have information on that.",
-      "sources": [],
-      "refused": true,
-      "latency_s": 3.6445,
-      "grounded": false,
-      "citation_accurate": false,
-      "refusal_correct": null
-    },
-    {
-      "question": "What are the steps to follow when a cybersecurity incident is detected?",
+      "question": "What are the four steps in the incident response process?",
       "expected_source": "incident_response",
       "answer": "# Incident Response Policy ## Purpose To guide employees through identification, reporting, and mitigation of security incidents. ## Incident Types - Malware or ransomware infection - Unauthorized data access - Lost or stolen device - Phishing attacks ## Response Process 1. Identify and isolate affected systems. 2. Report immediately to IT Security. 3. Preserve evidence. 4. Follow recovery procedures. ## Post\u2011Incident A review is conducted to identify improvements and update security practices.\n\n[source: incident_response.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
       "sources": [
@@ -411,24 +469,24 @@
           "snippet": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - ..."
         },
         {
+          "source": "anti_harassment.md",
+          "chunk_index": 0,
+          "snippet": "# Anti\u2011Harassment & Anti\u2011Discrimination Policy ## Purpose To maintain a safe, inclusive workplace free from harassment, discrimination, and retaliation. ## Definitions - **Harassment:** Any unwelcome conduct creating an intimidating environment. - **Discrimination:** Unfair treatment based on protected characteristics. ## Examples of Harassment - Offensive jokes or comments. - Unwanted physical co..."
+        },
+        {
           "source": "code_of_conduct.md",
           "chunk_index": 0,
           "snippet": "# Code of Conduct Policy ## Purpose This policy outlines the ethical, professional, and interpersonal standards expected from all members of the organization. ## Scope All employees, contractors, consultants, interns, and temporary workers. ## Guiding Principles - Integrity in all business interactions. - Respectful and inclusive communication. - Zero tolerance for harassment or retaliation. - Com..."
-        },
-        {
-          "source": "remote_work.md",
-          "chunk_index": 0,
-          "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
         }
       ],
       "refused": false,
-      "latency_s": 25.9617,
+      "latency_s": 28.07,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
     },
     {
-      "question": "Can employees mention their employer on personal social media accounts?",
+      "question": "Can employees use personal social media accounts to represent the company?",
       "expected_source": "social_media",
       "answer": "# Social Media & Public Communication Policy ## Purpose To protect organizational reputation and ensure safe communication practices. ## Personal Use - Employees may use personal accounts but must not imply official representation. - Confidential information must never be shared. ## Professional Use - Only designated staff may post on official channels. - All messaging must align with brand and communication guidelines. ## Misconduct Posting harmful, discriminatory, or inappropriate content may lead to disciplinary action.\n\n[source: social_media.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
       "sources": [
@@ -436,6 +494,16 @@
           "source": "social_media.md",
           "chunk_index": 0,
           "snippet": "# Social Media & Public Communication Policy ## Purpose To protect organizational reputation and ensure safe communication practices. ## Personal Use - Employees may use personal accounts but must not imply official representation. - Confidential information must never be shared. ## Professional Use - Only designated staff may post on official channels. - All messaging must align with brand and co..."
+        },
+        {
+          "source": "remote_work.md",
+          "chunk_index": 0,
+          "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
+        },
+        {
+          "source": "acceptable_use.md",
+          "chunk_index": 0,
+          "snippet": "# Acceptable Use of Technology Policy ## Purpose To define proper and safe use of organizational technology resources. ## Authorized Use - Accessing systems necessary for job duties. - Using corporate email for business communication. - Engaging in professional collaboration using approved tools. ## Prohibited Use - Installing unauthorized applications. - Accessing inappropriate, unlawful, or harm..."
         },
         {
           "source": "data_privacy.md",
@@ -446,11 +514,38 @@
           "source": "anti_harassment.md",
           "chunk_index": 0,
           "snippet": "# Anti\u2011Harassment & Anti\u2011Discrimination Policy ## Purpose To maintain a safe, inclusive workplace free from harassment, discrimination, and retaliation. ## Definitions - **Harassment:** Any unwelcome conduct creating an intimidating environment. - **Discrimination:** Unfair treatment based on protected characteristics. ## Examples of Harassment - Offensive jokes or comments. - Unwanted physical co..."
+        }
+      ],
+      "refused": false,
+      "latency_s": 26.95,
+      "grounded": true,
+      "citation_accurate": true,
+      "refusal_correct": null
+    },
+    {
+      "question": "What types of core training are required for all employees?",
+      "expected_source": "training_and_development",
+      "answer": "# Training & Development Policy ## Purpose To promote continuous learning and ensure employees have necessary skills. ## Core Training - Onboarding orientation - Security awareness - Anti\u2011harassment training - Job\u2011specific skills training ## Development Opportunities - Workshops and webinars - Certification programs - Mentorship initiatives ## Tracking HR monitors training participation and ensures annual compliance.\n\n[source: training_and_development.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "sources": [
+        {
+          "source": "training_and_development.md",
+          "chunk_index": 0,
+          "snippet": "# Training & Development Policy ## Purpose To promote continuous learning and ensure employees have necessary skills. ## Core Training - Onboarding orientation - Security awareness - Anti\u2011harassment training - Job\u2011specific skills training ## Development Opportunities - Workshops and webinars - Certification programs - Mentorship initiatives ## Tracking HR monitors training participation and ensure..."
         },
         {
-          "source": "acceptable_use.md",
+          "source": "workplace_safety.md",
           "chunk_index": 0,
-          "snippet": "# Acceptable Use of Technology Policy ## Purpose To define proper and safe use of organizational technology resources. ## Authorized Use - Accessing systems necessary for job duties. - Using corporate email for business communication. - Engaging in professional collaboration using approved tools. ## Prohibited Use - Installing unauthorized applications. - Accessing inappropriate, unlawful, or harm..."
+          "snippet": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - ..."
+        },
+        {
+          "source": "information_security.md",
+          "chunk_index": 0,
+          "snippet": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest ..."
+        },
+        {
+          "source": "performance_review.md",
+          "chunk_index": 0,
+          "snippet": "# Performance Review & Development Policy ## Purpose To support continuous improvement and professional growth. ## Components - Annual evaluation - Mid\u2011year progress review - Goal setting and career development planning ## Evaluation Areas - Job knowledge - Quality of work - Collaboration and communication - Initiative and problem\u2011solving ## Process 1. Employee self\u2011assessment. 2. Manager evaluati..."
         },
         {
           "source": "remote_work.md",
@@ -459,31 +554,83 @@
         }
       ],
       "refused": false,
-      "latency_s": 24.9577,
+      "latency_s": 26.13,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
     },
     {
-      "question": "What due diligence is required before onboarding a new vendor?",
+      "question": "What must be done with organizational data when ending a vendor relationship?",
       "expected_source": "vendor_management",
-      "answer": "I can only answer questions about the provided policies. I don't have information on that.",
-      "sources": [],
-      "refused": true,
-      "latency_s": 3.6668,
-      "grounded": false,
-      "citation_accurate": false,
+      "answer": "# Vendor Management & Third\u2011Party Risk Policy ## Purpose To ensure third\u2011party partners meet security, compliance, and operational standards. ## Vendor Evaluation - Assess service quality and risk level. - Review data privacy practices. - Confirm contract terms (confidentiality, security, breach notifications). ## Monitoring - Annual vendor reviews. - Compliance attestation where required. ## Termination Ensure secure return or destruction of organizational data when ending a vendor relationship.\n\n[source: vendor_management.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "sources": [
+        {
+          "source": "vendor_management.md",
+          "chunk_index": 0,
+          "snippet": "# Vendor Management & Third\u2011Party Risk Policy ## Purpose To ensure third\u2011party partners meet security, compliance, and operational standards. ## Vendor Evaluation - Assess service quality and risk level. - Review data privacy practices. - Confirm contract terms (confidentiality, security, breach notifications). ## Monitoring - Annual vendor reviews. - Compliance attestation where required. ## Term..."
+        },
+        {
+          "source": "equipment_allocation.md",
+          "chunk_index": 0,
+          "snippet": "# Equipment Allocation & Asset Management Policy ## Purpose To manage organizational equipment consistently and securely. ## Issuance - Employees receive devices based on job requirements. - All equipment must be signed out and tracked. ## Responsibilities - Keep devices in good condition. - Report damage or loss within 24 hours. - Return all equipment upon role change or separation. ## Maintenanc..."
+        },
+        {
+          "source": "acceptable_use.md",
+          "chunk_index": 0,
+          "snippet": "# Acceptable Use of Technology Policy ## Purpose To define proper and safe use of organizational technology resources. ## Authorized Use - Accessing systems necessary for job duties. - Using corporate email for business communication. - Engaging in professional collaboration using approved tools. ## Prohibited Use - Installing unauthorized applications. - Accessing inappropriate, unlawful, or harm..."
+        },
+        {
+          "source": "data_privacy.md",
+          "chunk_index": 0,
+          "snippet": "# Data Privacy & Confidentiality Policy ## Purpose To establish responsible handling of personal, confidential, and sensitive information. ## Categories of Data - Public - Internal - Confidential - Highly Sensitive ## Employee Requirements - Access only the minimum data needed to perform duties. - Do not discuss confidential data in public or insecure spaces. - Use approved document\u2011sharing platfo..."
+        },
+        {
+          "source": "code_of_conduct.md",
+          "chunk_index": 0,
+          "snippet": "# Code of Conduct Policy ## Purpose This policy outlines the ethical, professional, and interpersonal standards expected from all members of the organization. ## Scope All employees, contractors, consultants, interns, and temporary workers. ## Guiding Principles - Integrity in all business interactions. - Respectful and inclusive communication. - Zero tolerance for harassment or retaliation. - Com..."
+        }
+      ],
+      "refused": false,
+      "latency_s": 26.13,
+      "grounded": true,
+      "citation_accurate": true,
       "refusal_correct": null
     },
     {
-      "question": "What should an employee do immediately after a workplace injury?",
+      "question": "What should employees do if they identify a workplace hazard?",
       "expected_source": "workplace_safety",
-      "answer": "I can only answer questions about the provided policies. I don't have information on that.",
-      "sources": [],
-      "refused": true,
-      "latency_s": 3.6704,
-      "grounded": false,
-      "citation_accurate": false,
+      "answer": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - Know exit routes. - Follow instructions from emergency coordinators. - Participate in drills. ## Documentation Supervisors maintain incident logs for compliance tracking.\n\n[source: workplace_safety.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "sources": [
+        {
+          "source": "workplace_safety.md",
+          "chunk_index": 0,
+          "snippet": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - ..."
+        },
+        {
+          "source": "incident_response.md",
+          "chunk_index": 0,
+          "snippet": "# Incident Response Policy ## Purpose To guide employees through identification, reporting, and mitigation of security incidents. ## Incident Types - Malware or ransomware infection - Unauthorized data access - Lost or stolen device - Phishing attacks ## Response Process 1. Identify and isolate affected systems. 2. Report immediately to IT Security. 3. Preserve evidence. 4. Follow recovery procedu..."
+        },
+        {
+          "source": "anti_harassment.md",
+          "chunk_index": 0,
+          "snippet": "# Anti\u2011Harassment & Anti\u2011Discrimination Policy ## Purpose To maintain a safe, inclusive workplace free from harassment, discrimination, and retaliation. ## Definitions - **Harassment:** Any unwelcome conduct creating an intimidating environment. - **Discrimination:** Unfair treatment based on protected characteristics. ## Examples of Harassment - Offensive jokes or comments. - Unwanted physical co..."
+        },
+        {
+          "source": "information_security.md",
+          "chunk_index": 0,
+          "snippet": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest ..."
+        },
+        {
+          "source": "code_of_conduct.md",
+          "chunk_index": 0,
+          "snippet": "# Code of Conduct Policy ## Purpose This policy outlines the ethical, professional, and interpersonal standards expected from all members of the organization. ## Scope All employees, contractors, consultants, interns, and temporary workers. ## Guiding Principles - Integrity in all business interactions. - Respectful and inclusive communication. - Zero tolerance for harassment or retaliation. - Com..."
+        }
+      ],
+      "refused": false,
+      "latency_s": 28.74,
+      "grounded": true,
+      "citation_accurate": true,
       "refusal_correct": null
     },
     {
@@ -492,9 +639,9 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.8428,
-      "grounded": null,
-      "citation_accurate": null,
+      "latency_s": 3.83,
+      "grounded": false,
+      "citation_accurate": false,
       "refusal_correct": true
     }
   ]
