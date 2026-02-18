@@ -94,7 +94,7 @@ def chat():
 
 
 # Enhanced HTML chat UI with advanced UX features
-CHAT_HTML = """<!DOCTYPE html>
+CHAT_HTML = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
