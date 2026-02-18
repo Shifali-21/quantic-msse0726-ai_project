@@ -7,11 +7,11 @@
     "seed": 42
   },
   "metrics": {
-    "groundedness_pct": 42.1,
-    "citation_accuracy_pct": 42.1,
+    "groundedness_pct": 52.6,
+    "citation_accuracy_pct": 52.6,
     "refusal_accuracy_pct": 100.0,
-    "latency_p50_s": 3.913,
-    "latency_p95_s": 28.13,
+    "latency_p50_s": 5.439,
+    "latency_p95_s": 27.541,
     "n_questions": 20,
     "n_in_scope": 19,
     "n_out_of_scope": 1
@@ -49,7 +49,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 42.21,
+      "latency_s": 13.5637,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -57,12 +57,38 @@
     {
       "question": "What are the core working hours for remote employees?",
       "expected_source": "remote_work",
-      "answer": "I can only answer questions about the provided policies. I don't have information on that.",
-      "sources": [],
-      "refused": true,
-      "latency_s": 4.4716,
-      "grounded": false,
-      "citation_accurate": false,
+      "answer": "Remote employees are expected to set working hours that mirror on-site requirements [source: remote_work.md, chunk: 0]. Standard working hours for all employees are Monday\u2013Friday, 9 AM\u20135 PM [source: attendance_timekeeping.md, chunk: 0].",
+      "sources": [
+        {
+          "source": "remote_work.md",
+          "chunk_index": 0,
+          "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
+        },
+        {
+          "source": "attendance_timekeeping.md",
+          "chunk_index": 0,
+          "snippet": "# Attendance & Timekeeping Policy ## Purpose To ensure accurate reporting of work hours and consistent employee availability. ## Standards - Standard working hours: Monday\u2013Friday, 9 AM\u20135 PM. - All employees must log hours via the timekeeping system. - Overtime requires pre\u2011approval from supervisors. ## Absence Reporting - Notify supervisor at least one hour prior to shift. - Submit documentation f..."
+        },
+        {
+          "source": "training_and_development.md",
+          "chunk_index": 0,
+          "snippet": "# Training & Development Policy ## Purpose To promote continuous learning and ensure employees have necessary skills. ## Core Training - Onboarding orientation - Security awareness - Anti\u2011harassment training - Job\u2011specific skills training ## Development Opportunities - Workshops and webinars - Certification programs - Mentorship initiatives ## Tracking HR monitors training participation and ensure..."
+        },
+        {
+          "source": "code_of_conduct.md",
+          "chunk_index": 0,
+          "snippet": "# Code of Conduct Policy ## Purpose This policy outlines the ethical, professional, and interpersonal standards expected from all members of the organization. ## Scope All employees, contractors, consultants, interns, and temporary workers. ## Guiding Principles - Integrity in all business interactions. - Respectful and inclusive communication. - Zero tolerance for harassment or retaliation. - Com..."
+        },
+        {
+          "source": "workplace_safety.md",
+          "chunk_index": 0,
+          "snippet": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - ..."
+        }
+      ],
+      "refused": false,
+      "latency_s": 6.3351,
+      "grounded": true,
+      "citation_accurate": true,
       "refusal_correct": null
     },
     {
@@ -71,7 +97,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.4146,
+      "latency_s": 3.9882,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -82,7 +108,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.5754,
+      "latency_s": 3.8611,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -93,7 +119,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.4946,
+      "latency_s": 3.8411,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -101,7 +127,7 @@
     {
       "question": "How long do employees have to submit an expense report after incurring costs?",
       "expected_source": "expense_reimbursement",
-      "answer": "Employees have 30 days to submit reimbursement claims after incurring costs [source: expense_reimbursement.md, chunk: 0].",
+      "answer": "Employees must submit reimbursement claims within 30 days of incurring the expenses [source: expense_reimbursement.md, chunk: 0].",
       "sources": [
         {
           "source": "expense_reimbursement.md",
@@ -130,7 +156,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 5.8545,
+      "latency_s": 12.7479,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -138,7 +164,7 @@
     {
       "question": "What are the password requirements under the information security policy?",
       "expected_source": "information_security",
-      "answer": "The information security policy requires strong password creation and secure storage [source: information_security.md, chunk: 0]. \n\nI can only answer questions about the provided policies. I don't have information on that.",
+      "answer": "Strong password creation and secure storage are required [source: information_security.md, chunk: 0]. Multi-factor authentication is also required for system access [source: information_security.md, chunk: 0].  Additionally, use a company VPN when accessing internal systems [source: remote_work.md, chunk: 0] and secure home Wi-Fi with strong encryption [source: remote_work.md, chunk: 0].  Finally, do not allow family members to use corporate devices [source: remote_work.md, chunk: 0]. I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [
         {
           "source": "information_security.md",
@@ -167,7 +193,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 6.0063,
+      "latency_s": 14.7901,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -175,7 +201,7 @@
     {
       "question": "What must employees do if they suspect a security breach?",
       "expected_source": "information_security",
-      "answer": "Employees must report all incidents immediately to the Security Response Team [source: information_security.md, chunk: 0]. Additionally, suspected data breaches should be reported immediately to IT or the Privacy Officer [source: data_privacy.md, chunk: 0]. The incident response process involves reporting immediately to IT Security [source: incident_response.md, chunk: 0].",
+      "answer": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest and in transit. - Strong password creation and secure storage. - Prohibition of unapproved third\u2011party apps. ## Operational Controls - Network monitoring and threat detection. - Regular patching of servers and endpoints. - Backup and disaster recovery procedures. - Logging of access and security events. ## Incident Reporting All incidents must be reported immediately to the Security Response Team....\n\n[source: information_security.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
       "sources": [
         {
           "source": "information_security.md",
@@ -204,7 +230,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 7.1109,
+      "latency_s": 27.495,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -241,7 +267,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 26.0761,
+      "latency_s": 25.5063,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -252,7 +278,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.6366,
+      "latency_s": 3.4991,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -289,7 +315,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 27.096,
+      "latency_s": 28.0232,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -326,7 +352,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 27.3891,
+      "latency_s": 27.5155,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -337,7 +363,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.9691,
+      "latency_s": 4.2815,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -348,7 +374,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.8336,
+      "latency_s": 4.5432,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -359,7 +385,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.6619,
+      "latency_s": 3.6445,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -367,12 +393,38 @@
     {
       "question": "What are the steps to follow when a cybersecurity incident is detected?",
       "expected_source": "incident_response",
-      "answer": "I can only answer questions about the provided policies. I don't have information on that.",
-      "sources": [],
-      "refused": true,
-      "latency_s": 3.8566,
-      "grounded": false,
-      "citation_accurate": false,
+      "answer": "# Incident Response Policy ## Purpose To guide employees through identification, reporting, and mitigation of security incidents. ## Incident Types - Malware or ransomware infection - Unauthorized data access - Lost or stolen device - Phishing attacks ## Response Process 1. Identify and isolate affected systems. 2. Report immediately to IT Security. 3. Preserve evidence. 4. Follow recovery procedures. ## Post\u2011Incident A review is conducted to identify improvements and update security practices.\n\n[source: incident_response.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "sources": [
+        {
+          "source": "incident_response.md",
+          "chunk_index": 0,
+          "snippet": "# Incident Response Policy ## Purpose To guide employees through identification, reporting, and mitigation of security incidents. ## Incident Types - Malware or ransomware infection - Unauthorized data access - Lost or stolen device - Phishing attacks ## Response Process 1. Identify and isolate affected systems. 2. Report immediately to IT Security. 3. Preserve evidence. 4. Follow recovery procedu..."
+        },
+        {
+          "source": "information_security.md",
+          "chunk_index": 0,
+          "snippet": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest ..."
+        },
+        {
+          "source": "workplace_safety.md",
+          "chunk_index": 0,
+          "snippet": "# Workplace Safety Policy ## Purpose To foster a safe, hazard\u2011free environment across all work sites. ## Safety Principles - Everyone is responsible for maintaining safety. - Hazards must be reported immediately. - Safety equipment must be used as required. ## Key Areas - Fire safety and evacuation plans. - Ergonomic workstation setup. - Incident and near\u2011miss reporting. ## Emergency Procedures - ..."
+        },
+        {
+          "source": "code_of_conduct.md",
+          "chunk_index": 0,
+          "snippet": "# Code of Conduct Policy ## Purpose This policy outlines the ethical, professional, and interpersonal standards expected from all members of the organization. ## Scope All employees, contractors, consultants, interns, and temporary workers. ## Guiding Principles - Integrity in all business interactions. - Respectful and inclusive communication. - Zero tolerance for harassment or retaliation. - Com..."
+        },
+        {
+          "source": "remote_work.md",
+          "chunk_index": 0,
+          "snippet": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate d..."
+        }
+      ],
+      "refused": false,
+      "latency_s": 25.9617,
+      "grounded": true,
+      "citation_accurate": true,
       "refusal_correct": null
     },
     {
@@ -407,7 +459,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 25.0121,
+      "latency_s": 24.9577,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -418,7 +470,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.5713,
+      "latency_s": 3.6668,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -429,7 +481,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.7725,
+      "latency_s": 3.6704,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -440,7 +492,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.6009,
+      "latency_s": 3.8428,
       "grounded": null,
       "citation_accurate": null,
       "refusal_correct": true

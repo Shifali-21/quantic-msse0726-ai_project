@@ -244,7 +244,7 @@ def retrieve_and_answer(
     re_rank_model: str = None,
     gen_model: str = None,   # kept for API compat; OpenRouter model set via env
     max_tokens: int = MAX_DEFAULT_TOKENS,
-    refusal_threshold: float = 0.0,
+    refusal_threshold: float = -1.0,
     device: int = -1,        # unused; kept for API compat
 ) -> Dict[str, Any]:
     """
