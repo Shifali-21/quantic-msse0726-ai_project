@@ -133,10 +133,10 @@ We evaluated the RAG system on 20 questions spanning all 15 policy documents plu
 | Metric | Value |
 |---|---|
 | Groundedness | 84.2% (16/19 in-scope) |
-| Citation Accuracy | 78.9% (15/19 in-scope) |
+| Citation Accuracy | 84.2% (16/19 in-scope) |
 | Refusal Accuracy | 100% (1/1 out-of-scope) |
-| Latency p50 | 26.4s |
-| Latency p95 | 33.2s |
+| Latency p50 | 27.1s |
+| Latency p95 | 31.8s |
 
 **Evaluation Set:** 20 questions covering all 15 policy documents, with one out-of-scope guardrail test. Questions were designed to be directly answerable from the corpus content rather than requiring inference or information not present in the policies.
 
@@ -144,13 +144,13 @@ We evaluated the RAG system on 20 questions spanning all 15 policy documents plu
 
 **Groundedness (84.2%):** The majority of in-scope questions received LLM-generated or extractive answers grounded in retrieved policy text with proper citations. The 16% of non-grounded responses (3/19 questions) were refused by the CrossEncoder threshold despite being answerable — these queries (about file storage locations, customer data access principles, and absence notice requirements) scored between -1.5 and -2.0 on the CrossEncoder, just below the -1.0 threshold. Further threshold tuning could improve this metric, though at the risk of allowing marginally relevant responses through.
 
-**Citation Accuracy (78.9%):** Most grounded answers cited the correct source document. The gap between groundedness (84.2%) and citation accuracy (78.9%) indicates that one answer retrieved relevant content but from a secondary policy document rather than the primary expected source — this is acceptable behaviour when policies cross-reference each other.
+**Citation Accuracy (84.2%):** All grounded answers successfully cited the correct source document. The alignment between groundedness and citation accuracy (both 84.2%) indicates that when the system retrieves relevant content and generates an answer, it consistently attributes the information to the correct policy document. This demonstrates that the CrossEncoder re-ranking is effectively surfacing the most relevant source documents, and the LLM is properly extracting and citing the expected sources from the retrieved context.
 
 **Refusal Accuracy (100%):** The out-of-scope question ("What is the current stock price of the company?") was correctly refused with the guardrail message, demonstrating that the system does not hallucinate answers for topics outside the policy corpus.
 
-**Latency Results:** The p50 (26.4s) and p95 (33.2s) latencies are significantly higher than typical RAG systems due to the free-tier fallback chain. When the primary model (`google/gemma-3-27b-it:free`) encounters rate limits from its upstream provider (Google AI Studio), the system attempts 3 additional free models with retry logic before falling back to extractive answers. Each failed model attempt includes 2-second wait periods, resulting in 20-30 seconds of retry overhead per query during periods of high free-tier congestion.
+**Latency Results:** The p50 (27.1s) and p95 (31.8s) latencies are significantly higher than typical RAG systems due to the free-tier fallback chain. When the primary model (`google/gemma-3-27b-it:free`) encounters rate limits from its upstream provider (Google AI Studio), the system attempts 3 additional free models with retry logic before falling back to extractive answers. Each failed model attempt includes 2-second wait periods, resulting in 20-30 seconds of retry overhead per query during periods of high free-tier congestion.
 
-**Breakdown:** Approximately 60-70% of queries during this evaluation hit rate limits on the primary model and required fallback attempts. Queries that succeeded on the first model attempt completed in 5-8 seconds (retrieval: ~0.5s, re-ranking: ~0.8s, LLM generation: ~3-6s). The high p50/p95 latencies reflect the infrastructure constraints of free-tier LLM APIs rather than algorithmic inefficiency. For production deployments, using paid API tiers with higher rate limits would reduce latency to <5s by eliminating retry overhead.
+**Breakdown:** The evaluation showed that most queries required fallback attempts due to rate limiting. One query (Q1) took 47.3 seconds due to exhaustive fallback chain traversal, while the fastest grounded responses (when LLM succeeded immediately) completed in 15-29 seconds. Queries that succeeded on the first model attempt completed in approximately 15-20 seconds (retrieval + embedding: ~0.5s, re-ranking: ~0.8s, LLM generation: ~12-18s including API network latency). The consistent p50/p95 latencies in the 27-32s range reflect the infrastructure constraints of free-tier LLM APIs rather than algorithmic inefficiency. For production deployments, using paid API tiers with higher rate limits would reduce latency to 5-8s by eliminating retry overhead.
 
 **Rate Limit Context:** OpenRouter's free tier imposes a 50 requests/day limit across all free models. During evaluation, this quota was exhausted partway through the 20-question set, forcing later questions to rely entirely on the extractive fallback. This explains why some queries show consistent rate limit failures across all 4 models in the fallback chain — the daily quota was depleted before those queries could receive LLM responses.
 

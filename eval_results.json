@@ -3,15 +3,15 @@
   "in_scope_questions": 19,
   "out_of_scope_questions": 1,
   "groundedness_pct": 84.2,
-  "citation_accuracy_pct": 78.9,
+  "citation_accuracy_pct": 84.2,
   "refusal_accuracy_pct": 100.0,
-  "latency_p50_s": 26.384,
-  "latency_p95_s": 33.194,
+  "latency_p50_s": 27.085,
+  "latency_p95_s": 31.784,
   "results": [
     {
       "question": "What type of device must remote workers use?",
       "expected_source": "remote_work",
-      "answer": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate devices. - Secure home Wi\u2011Fi with strong encryption. ## Communication Expectations - Attend virtual meetings on time. - Use video conferencing appropriately. - Set working hours that mirror on\u2011site requirements. ## Support IT provides remote troubleshooting and device management.\n\n[source: remote_work.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "answer": "Remote workers must use a company-issued or approved device [source: remote_work.md, chunk: 0]. Employees receive devices based on job requirements [source: equipment_allocation.md, chunk: 0].",
       "sources": [
         {
           "source": "remote_work.md",
@@ -40,7 +40,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 34.41,
+      "latency_s": 47.26,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -48,7 +48,7 @@
     {
       "question": "What are the communication expectations for remote employees?",
       "expected_source": "remote_work",
-      "answer": "# Remote & Hybrid Work Policy ## Purpose To ensure employees working remotely do so securely, productively, and professionally. ## Workspace Standards - Maintain a quiet, private workstation. - Protect visible documents and screens. - Use a company\u2011issued or approved device. ## Security Requirements - Use company VPN when accessing internal systems. - Do not allow family members to use corporate devices. - Secure home Wi\u2011Fi with strong encryption. ## Communication Expectations - Attend virtual meetings on time. - Use video conferencing appropriately. - Set working hours that mirror on\u2011site requirements. ## Support IT provides remote troubleshooting and device management.\n\n[source: remote_work.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "answer": "Remote employees are expected to attend virtual meetings on time [source: remote_work.md, chunk: 0], use video conferencing appropriately [source: remote_work.md, chunk: 0], and set working hours that mirror on-site requirements [source: remote_work.md, chunk: 0]. Furthermore, all communication must be respectful and inclusive, adhering to the Code of Conduct [source: code_of_conduct.md, chunk: 0]. [source: code_of_conduct.md, chunk: 0] emphasizes professional, respectful language in all settings. I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [
         {
           "source": "remote_work.md",
@@ -77,7 +77,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 27.39,
+      "latency_s": 15.22,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -85,7 +85,7 @@
     {
       "question": "What are the standard working hours?",
       "expected_source": "attendance_timekeeping",
-      "answer": "# Attendance & Timekeeping Policy ## Purpose To ensure accurate reporting of work hours and consistent employee availability. ## Standards - Standard working hours: Monday\u2013Friday, 9 AM\u20135 PM. - All employees must log hours via the timekeeping system. - Overtime requires pre\u2011approval from supervisors. ## Absence Reporting - Notify supervisor at least one hour prior to shift. - Submit documentation for medical or emergency leave. - Repeated tardiness may lead to corrective actions. ## Records Management Timekeeping data is stored securely by HR for compliance audits.\n\n[source: attendance_timekeeping.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "answer": "Standard working hours are Monday\u2013Friday, 9 AM\u20135 PM [source: attendance_timekeeping.md, chunk: 0]. All employees must log hours via the timekeeping system [source: attendance_timekeeping.md, chunk: 0]. Overtime requires pre\u2011approval from supervisors [source: attendance_timekeeping.md, chunk: 0].",
       "sources": [
         {
           "source": "attendance_timekeeping.md",
@@ -114,7 +114,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 25.44,
+      "latency_s": 13.72,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -125,7 +125,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.5,
+      "latency_s": 4.62,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -133,7 +133,7 @@
     {
       "question": "What types of expenses are allowable for reimbursement?",
       "expected_source": "expense_reimbursement",
-      "answer": "# Expense & Reimbursement Policy ## Purpose To standardize reimbursement for business\u2011related expenses. ## Allowable Expenses - Travel: airfare, lodging, transportation. - Meals during business travel. - Office supplies or equipment approved by management. ## Requirements - Obtain approval before incurring major expenses. - Provide itemized receipts. - Submit reimbursement claims within 30 days. ## Review Process Finance reviews each submission for compliance with guidelines.\n\n[source: expense_reimbursement.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "answer": "Allowable expenses for reimbursement include travel (airfare, lodging, transportation), meals during business travel, and office supplies or equipment approved by management [source: expense_reimbursement.md, chunk: 0]. [source: expense_reimbursement.md, chunk: 0] It is required to obtain approval before incurring major expenses and to provide itemized receipts [source: expense_reimbursement.md, chunk: 0]. I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [
         {
           "source": "expense_reimbursement.md",
@@ -162,7 +162,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 33.13,
+      "latency_s": 19.48,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -199,7 +199,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 30.18,
+      "latency_s": 29.95,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -207,7 +207,7 @@
     {
       "question": "What authentication method is required for system access?",
       "expected_source": "information_security",
-      "answer": "# Information Security Policy ## Purpose To safeguard all organizational data and digital infrastructure from misuse, breach, or unauthorized access. ## Responsibilities - Employees must protect their credentials. - IT ensures secure system configuration. - Managers enforce security compliance. ## Requirements - Multi-factor authentication for system access. - Encryption of sensitive data at rest and in transit. - Strong password creation and secure storage. - Prohibition of unapproved third\u2011party apps. ## Operational Controls - Network monitoring and threat detection. - Regular patching of servers and endpoints. - Backup and disaster recovery procedures. - Logging of access and security events. ## Incident Reporting All incidents must be reported immediately to the Security Response Team....\n\n[source: information_security.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "answer": "Multi-factor authentication is required for system access [source: information_security.md, chunk: 0].",
       "sources": [
         {
           "source": "information_security.md",
@@ -236,7 +236,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 26.67,
+      "latency_s": 10.12,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -244,7 +244,7 @@
     {
       "question": "Who should employees report security incidents to?",
       "expected_source": "information_security",
-      "answer": "# Incident Response Policy ## Purpose To guide employees through identification, reporting, and mitigation of security incidents. ## Incident Types - Malware or ransomware infection - Unauthorized data access - Lost or stolen device - Phishing attacks ## Response Process 1. Identify and isolate affected systems. 2. Report immediately to IT Security. 3. Preserve evidence. 4. Follow recovery procedures. ## Post\u2011Incident A review is conducted to identify improvements and update security practices.\n\n[source: incident_response.md, chunk: 0]\n\nNote: Answer is based solely on the provided policies.",
+      "answer": "All incidents must be reported immediately to the Security Response Team [source: information_security.md, chunk: 0]. [source: incident_response.md, chunk: 0]",
       "sources": [
         {
           "source": "incident_response.md",
@@ -273,9 +273,9 @@
         }
       ],
       "refused": false,
-      "latency_s": 26.3,
+      "latency_s": 16.46,
       "grounded": true,
-      "citation_accurate": false,
+      "citation_accurate": true,
       "refusal_correct": null
     },
     {
@@ -310,7 +310,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 29.34,
+      "latency_s": 29.75,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -321,7 +321,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.46,
+      "latency_s": 4.04,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -358,7 +358,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 26.47,
+      "latency_s": 27.45,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -369,7 +369,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.83,
+      "latency_s": 3.76,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": null
@@ -406,7 +406,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 25.28,
+      "latency_s": 30.97,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -443,7 +443,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 25.38,
+      "latency_s": 28.48,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -480,7 +480,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 28.07,
+      "latency_s": 26.72,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -517,7 +517,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 26.95,
+      "latency_s": 27.89,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -554,7 +554,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 26.13,
+      "latency_s": 29.17,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -591,7 +591,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 26.13,
+      "latency_s": 27.77,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -628,7 +628,7 @@
         }
       ],
       "refused": false,
-      "latency_s": 28.74,
+      "latency_s": 28.0,
       "grounded": true,
       "citation_accurate": true,
       "refusal_correct": null
@@ -639,7 +639,7 @@
       "answer": "I can only answer questions about the provided policies. I don't have information on that.",
       "sources": [],
       "refused": true,
-      "latency_s": 3.83,
+      "latency_s": 4.21,
       "grounded": false,
       "citation_accurate": false,
       "refusal_correct": true
